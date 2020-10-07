@@ -65,7 +65,7 @@ except:
         
 try:
     while (True):
-        str_amount = input("做几道题（接受1到100），默认10：");
+        str_amount = input("做几道题（接受1到100），默认10：")
         if int(str_amount) < 1 or int(str_amount) > 100:
             print ("范围超过啦！")
         else:
@@ -131,8 +131,9 @@ while n < num_amount:
     
     #确定运算符后，找前后变量直到题目结果为范围内的整数
     while (True):
-        num_a = random.randint(0, num_max)
-        num_b = random.randint(0, num_max)
+        num_a = random.randint(1, num_max)
+        num_b = random.randint(1, num_max)
+        # 根据慕慕同学的要求，运算数字中不再出现0
         if num_operator == 0:
             if num_a + num_b <= num_max:
                 #加法，判断和不超过最大值
@@ -166,13 +167,22 @@ while n < num_amount:
         print(arrstr_question[n])
         file_output_exam.writelines(arrstr_question[n] + "\n")
     else:
-        #电脑模式下接受用户输入的答案
-        arrnum_ans.append(int(input(arrstr_question[n])))
+        # 电脑模式下接受用户输入的答案
+        answered = False
+        while(not answered):
+            try:
+                answer_try = int(input(arrstr_question[n]))
+                answered = True
+            except:
+                print("请输入计算结果数字后再按return/enter键哦。")
+        # 防止输入错误的bug
+        arrnum_ans.append(answer_try)
         arrnum_rating.append(0)
         #练习模式下记录题目并实时反馈结果
         if num_mode == 2:
             while arrnum_result[n] != arrnum_ans[n]:
-                print("再想一想？")
+                print("做错啦！")
+                # 慕慕说不要“再想一想”
                 #记录答错次数
                 arrnum_rating[n] += 1
                 #删除输入值
