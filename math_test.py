@@ -181,7 +181,7 @@ while n < num_amount:
         #练习模式下记录题目并实时反馈结果
         if num_mode == 2:
             while arrnum_result[n] != arrnum_ans[n]:
-                print("做错啦！")
+                print("好可惜啊！")
                 # 慕慕说不要“再想一想”
                 #记录答错次数
                 arrnum_rating[n] += 1
@@ -192,8 +192,8 @@ while n < num_amount:
                 str_desc = "\t做错" + str(arrnum_rating[n]) + "次后做对"
                 print("这道题做错了" + str(arrnum_rating[n]) + "次之后才做对哦")
             else:
-                str_desc = "\t回答正确！"
-                print("回答正确！")
+                str_desc = "\t你很棒哦！"
+                print("你很棒哦！")
             file_output_exam.writelines(arrstr_question[n] + str_desc + "\n")
         elif num_mode == 3:
             #考试模式记录题目、作答结果以及判断
