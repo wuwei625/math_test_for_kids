@@ -181,8 +181,7 @@ while n < num_amount:
         #练习模式下记录题目并实时反馈结果
         if num_mode == 2:
             while arrnum_result[n] != arrnum_ans[n]:
-                print("好可惜啊！")
-                # 慕慕说不要“再想一想”
+                print("再想一想")
                 #记录答错次数
                 arrnum_rating[n] += 1
                 #删除输入值
